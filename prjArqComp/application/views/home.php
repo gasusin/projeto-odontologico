@@ -14,9 +14,6 @@
 </head>
 <body>
 <?php include_once("menu.php"); ?>
-
-
-	TESTE</br>
 	TESTE</br>
 	TESTE</br>
 	TESTE</br>

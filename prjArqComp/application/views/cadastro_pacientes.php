@@ -8,8 +8,8 @@
     <script src="<?= base_url('js/bootstrap.js'); ?>"></script>
     <script src="<?= base_url("js/bootbox.min.js");?>"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+    <script src="<?= base_url("js/jquery.min.js");?>"></script>
+    <script src="<?= base_url("js/jquery.maskedinput.min.js");?>"></script>
 
     <link rel="stylesheet" href="<?= base_url('css/bootstrap.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('css/bootstrap.min.css'); ?>">
@@ -174,8 +174,8 @@
 
 <script type="text/javascript">
   // Mascara campos
-  // $("#cnpj").mask("999.999.999-99");
-  // $("#codigo").mask("99999");
+  $("#cnpj").mask("999.999.999-99");
+  $("#codigo").mask("99999");
   
 
   // Botões
@@ -205,10 +205,19 @@
 
     // $('alt_paciente').val(nome_paciente);
 
+    // console.log($(".form-content").find('#alt_paciente').val(nome_paciente));
+    // console.log($(".form-content").find('#alt_paciente')[0].value);
+    // document.getElementById('alt_paciente').value = nome_paciente;
+    
+    form = $(".form-content").clone(true);
+    // $(".form-content").find('name=alt_paciente').val(nome_paciente)
+    // form.find('#alt_paciente').val(nome_paciente);
+    // form.css('display','');
+
     dialog = bootbox.dialog({
       size: 'large',
       title: "Alterar paciente <strong>" + nome_paciente + "</strong>",
-      message: $(".form-content").html(),
+      message: form.html(), //$(".form-content").clone(true).html(),
       onEscape: true,
       buttons: {
             cancel: {
@@ -239,14 +248,15 @@
                   window.location.reload();
               }
             }
-        },
+        }
+        
       });
   });
   
 
 
   // Seleção da linha
-  var tr = $('table tr');
+  var tr = $('table tr:not(thead > tr)'); // :not(thead > tr) não permite seleção de linha do cabeçalho
   tr.on('click', function () {
       $(this).toggleClass('selecionado');
       tr.not(this).removeClass('selecionado');

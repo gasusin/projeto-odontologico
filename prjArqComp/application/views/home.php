@@ -26,8 +26,6 @@
 	beibe beibe do beibe do biruleibe
 	TESTE</br>
 	TESTE</br>
-	TESTE</br>
-	TESTE</br>
 
 </body>
 </html>

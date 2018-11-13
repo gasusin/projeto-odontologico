@@ -23,12 +23,10 @@
 	TESTE</br>
 	TESTE</br>
 	TESTE</br>
-	beibe beibe do beibe do biruleibe
 	TESTE</br>
 	TESTE</br>
 	TESTE</br>
 	TESTE</br>
-	teste 2222222222222222222222222
 
 </body>
 </html>

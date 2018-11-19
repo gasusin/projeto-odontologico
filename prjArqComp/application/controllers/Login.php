@@ -31,7 +31,7 @@ class Login extends CI_Controller {
 		if ($this->input->get('senha') && !empty($this->input->get('senha'))) {
 			$senha = $this->input->get('senha');
 		}
-// echo "0";
+
 		if (isset($usuario) && isset($senha)) {
 				
 			// Acessa model para realizar busca no banco
@@ -42,10 +42,13 @@ class Login extends CI_Controller {
 			}
 
 		}
-echo "3";die;
-		// redirect("login.php");die;
-$this->CI->load->view("login");die;
-		// return false;
+
+		redirect("Login");die;
+	}
+
+	function logout() {
+
+		redirect("Login");die;
 	}
 }
 

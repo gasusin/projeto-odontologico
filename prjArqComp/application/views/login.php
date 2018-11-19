@@ -1,14 +1,4 @@
-<html>
-<head>
-    <title>Projeto e Arquitetura de Software </title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-    <script src="js/jquery-222.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.css">
-    <link rel="stylesheet" href="css/font-awesome.css">
+<?php $this->load->view('sys/header');?>
 
     <style type="text/css">
         
@@ -31,6 +21,7 @@
 
         .loginmodal-container input[type=submit] {
           width: 100%;
+          height: 5vh;
           display: block;
           margin-bottom: 10px;
           position: relative;
@@ -40,6 +31,7 @@
           height: 7%;
           font-size: 16px;
           width: 100%;
+          height: 5vh;
           margin-bottom: 10px;
           -webkit-appearance: none;
           background: #fff;
@@ -71,11 +63,8 @@
         .loginmodal-submit:hover {
             background-color: #357ae8;
         }
-
-
     </style>
-</head>
-<body>
+
 
 <div class="loginmodal-container">
     <h1>Acessar sistema</h1><br>
@@ -86,6 +75,4 @@
     </form>
 </div>
 
-
-</body>
-</html>
+<?php $this->load->view('sys/footer');?>

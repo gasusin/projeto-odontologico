@@ -1,153 +1,228 @@
 <style type="text/css">
-    
-  body,html{
+  .nav-side-menu {
+    overflow: auto;
+    font-family: verdana;
+    font-size: 12px;
+    font-weight: 200;
+    background-color: #2e353d;
+    position: fixed;
+    top: 0px;
+    /*width: 15vw;*/
     height: 100%;
+    color: #e1ffff;
+  }
+  .nav-side-menu .brand {
+    background-color: #23282e;
+    line-height: 50px;
+    display: block;
+    text-align: center;
+    font-size: 14px;
+  }
+  .nav-side-menu .toggle-btn {
+    display: none;
+  }
+  .nav-side-menu ul,
+  .nav-side-menu li {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    line-height: 35px;
+    cursor: pointer;
+    /*    
+      .collapsed{
+         .arrow:before{
+                   font-family: FontAwesome;
+                   content: "\f053";
+                   display: inline-block;
+                   padding-left:10px;
+                   padding-right: 10px;
+                   vertical-align: middle;
+                   float:right;
+              }
+       }
+  */
   }
 
-  nav.sidebar{
-    -webkit-transition: margin 200ms ease-out;
-    -moz-transition: margin 200ms ease-out;
-    -o-transition: margin 200ms ease-out;
-    transition: margin 200ms ease-out;
+  .nav-side-menu ul :not(collapsed) .arrow:before,
+  .nav-side-menu li :not(collapsed) .arrow:before {
+    font-family: FontAwesome;
+    content: "\f078";
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    vertical-align: middle;
+    float: right;
   }
-
-  @media (min-width: 765px) {
-
-    nav.sidebar:hover{
-      margin-left: 200px;
-    }
-
-    nav.sidebar.navbar.sidebar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
-      margin-left: 0px;
-    }
-
-    nav.sidebar .navbar-brand, nav.sidebar .navbar-header{
-      text-align: center;
-      width: 100%;
-      margin-left: 0px;
-    }
-
-    nav.sidebar a{
-      padding-right: 13px;
-    }
-
-    nav.sidebar .navbar-nav > li:first-child{
-      border-top: 1px #e5e5e5 solid;
-    }
-
-    nav.sidebar .navbar-nav > li{
-      border-bottom: 1px #e5e5e5 solid;
-    }
-
-    nav.sidebar .navbar-nav .open .dropdown-menu {
-      position: static;
-      float: none;
-      width: auto;
-      margin-top: 0;
-      background-color: transparent;
-      border: 0;
-      -webkit-box-shadow: none;
-      box-shadow: none;
-    }
-
-    nav.sidebar .navbar-collapse, nav.sidebar .container-fluid{
-      padding: 0 0px 0 0px;
-    }
-
-    .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
-      color: #777;
-    }
-
-    nav.sidebar{
-      width: 200px;
-      height: 100%;
-      margin-left: -160px;
-      float: left;
-      margin-bottom: 0px;
-    }
-
-    nav.sidebar li {
-      width: 100%;
-    }
-
-    nav.sidebar:hover{
-      margin-left: 0px;
-    }
-
-    .forAnimate{
-      opacity: 0;
-    }
+  .nav-side-menu ul .active,
+  .nav-side-menu li .active {
+    border-left: 3px solid #d19b3d;
+    background-color: #4f5b69;
   }
-
-  @media (min-width: 1330px) {
-
-    nav.sidebar{
+  .nav-side-menu ul .sub-menu li.active,
+  .nav-side-menu li .sub-menu li.active {
+    color: #d19b3d;
+  }
+  .nav-side-menu ul .sub-menu li.active a,
+  .nav-side-menu li .sub-menu li.active a {
+    color: #d19b3d;
+  }
+  .nav-side-menu ul .sub-menu li,
+  .nav-side-menu li .sub-menu li {
+    background-color: #181c20;
+    border: none;
+    line-height: 28px;
+    border-bottom: 1px solid #23282e;
     margin-left: 0px;
-    float: left;
+  }
+  .nav-side-menu ul .sub-menu li:hover,
+  .nav-side-menu li .sub-menu li:hover {
+    background-color: #020203;
+  }
+  .nav-side-menu ul .sub-menu li:before,
+  .nav-side-menu li .sub-menu li:before {
+    font-family: FontAwesome;
+    content: "\f105";
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    vertical-align: middle;
+  }
+  .nav-side-menu li {
+    padding-left: 0px;
+    border-left: 3px solid #2e353d;
+    border-bottom: 1px solid #23282e;
+  }
+  .nav-side-menu a li, .nav-side-menu li a {
+    text-decoration: none;
+    color: #e1ffff;
+  }
+  .nav-side-menu li a i {
+    padding-left: 10px;
+    width: 20px;
+    padding-right: 20px;
+  }
+  .nav-side-menu li:hover {
+    border-left: 3px solid #d19b3d;
+    background-color: #4f5b69;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+  }
+  @media (max-width: 767px) {
+    .nav-side-menu {
+      position: relative;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .nav-side-menu .toggle-btn {
+      display: block;
+      cursor: pointer;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      z-index: 10 !important;
+      padding: 3px;
+      background-color: #ffffff;
+      color: #000;
+      width: 40px;
+      text-align: center;
+    }
+    .brand {
+      text-align: left !important;
+      font-size: 22px;
+      padding-left: 20px;
+      line-height: 50px !important;
     }
 
-    nav.sidebar .forAnimate{
-    opacity: 1;
+    /*.brand img {
+      width: 50%;
+      height: 50%;
+    }*/
+  }
+  @media (min-width: 767px) {
+    .nav-side-menu .menu-list .menu-content {
+      display: block;
     }
   }
-
-  nav.sidebar .navbar-nav .open .dropdown-menu>li>a:hover, nav.sidebar .navbar-nav .open .dropdown-menu>li>a:focus {
-  color: #CCC;
-  background-color: transparent;
+  body {
+    margin: 0px;
+    padding: 0px;
   }
-
-  nav:hover .forAnimate{
-  opacity: 1;
-  }
-  section{
-  padding-left: 15px;
-  }
-
 
 
 </style>
 
 
-<!-- Menu lateral -->
-<nav class="navbar navbar-default sidebar" role="navigation">
-  <div class="container-fluid">
-    <!-- <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>      
-    </div> -->
-    <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active">
-          <a href="<?php echo site_url('home/home'); ?>">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastros <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
-          <ul class="dropdown-menu forAnimate" role="menu">
-            <li>
-              <a href="<?php echo site_url('home/cadastro_pacientes'); ?>">Pacientes</a>
-            </li>
-            <li class="divider"></li>
-            <li>
-              <a href="#" id="odontologistas">Odontologistas - Restrito</a>
-            </li>
-            <li class="divider"></li>
-            <li>
-              <a href="#">Radiografias</a>
-            </li>
-            <li>
-              <a href="#">Odontogramas</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
+<div class="nav-side-menu">
+  <div class="brand">
+    <img src="<?= base_url('assets/img/dente.png'); ?>">
   </div>
-</nav>
+  <div class="menu-list">
+    <ul id="menu-content" class="menu-content collapse out">
+      <a href="<?php echo site_url('home/home'); ?>">
+        <li>
+            <i class="fa fa-home fa-lg"></i> Home
+        </li>
+      </a>
 
+      <a href="#">
+        <li  data-toggle="collapse" data-target="#cadastros" class="collapsed">
+          <i class="fa fa-user fa-lg"></i> Cadastros <span class="arrow"></span>
+        </li>
+      </a>
+      <ul class="sub-menu collapse" id="cadastros">
+        <a href="<?php echo site_url('home/cadastro_pacientes'); ?>">
+          <li>Pacientes</li>
+        </a>
+        <a href="#" id="odontologistas">
+          <li>Odontologistas - Restrito</li>
+        </a>
+        <a href="#">
+          <li>Radiografias</li>
+        </a>
+        <a href="#">
+          <li>Odontogramas</li>
+        </a>
+      </ul>
+
+      <a href="<?php echo site_url('login/logout'); ?>">
+        <li>
+            <i class="fa fa-sign-out fa-lg"></i> Sair
+        </li>
+      </a>
+
+
+      <!-- <li data-toggle="collapse" data-target="#service" class="collapsed">
+        <a href="#"><i class="fa fa-globe fa-lg"></i> Services <span class="arrow"></span></a>
+      </li>  
+      <ul class="sub-menu collapse" id="service">
+        <li>New Service 1</li>
+        <li>New Service 2</li>
+        <li>New Service 3</li>
+      </ul>
+      <li data-toggle="collapse" data-target="#new" class="collapsed">
+        <a href="#"><i class="fa fa-car fa-lg"></i> New <span class="arrow"></span></a>
+      </li>
+      <ul class="sub-menu collapse" id="new">
+        <li>New New 1</li>
+        <li>New New 2</li>
+        <li>New New 3</li>
+      </ul>
+      <li>
+        <a href="#">
+          <i class="fa fa-user fa-lg"></i> Profile
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-users fa-lg"></i> Users
+        </a>
+      </li> -->
+    </ul>
+  </div>
+</div>
 
 
 <script type="text/javascript">
@@ -157,6 +232,7 @@ $(document).ready(function(){
   $('#odontologistas').click(function() {
     alert('Àrea restrita!');
   });
+
 });
 
 </script>

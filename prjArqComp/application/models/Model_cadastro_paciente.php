@@ -12,7 +12,7 @@ class Model_cadastro_paciente extends CI_Model {
         $cQuery = "";
         $query = null;
 
-        $cpf = str_replace(array('.','-'), "", $cpf);
+        //$cpf = str_replace(array('.','-'), "", $cpf);
         // var_dump($cpf);die;
         // var_dump($data_nascimento);die;
         // $data_nascimento = date('d-m-Y', strtotime($data_nascimento));
@@ -23,7 +23,7 @@ class Model_cadastro_paciente extends CI_Model {
                     SELECT  LPAD(COALESCE(MAX(`id_paciente`),0)+1,
                                 (SELECT character_maximum_length FROM information_schema.columns WHERE table_name = 'paciente' AND column_name = 'id_paciente'),
                                 '0'),
-                            '".$paciente."',".$cpf.",'".$data_nascimento."','".$plano_saude."',CURDATE(), CURTIME() FROM `paciente` ";
+                            '".$paciente."','".$cpf."','".$data_nascimento."','".$plano_saude."',CURDATE(), CURTIME() FROM `paciente` ";
         $query = $this->db->query($cQuery);
         return true;
         
@@ -62,12 +62,12 @@ class Model_cadastro_paciente extends CI_Model {
     }
 
     # ALTERA PACIENTE
-    function altPacienteBanco($codigo, $nome, $cnpj, $data_nasc, $plano_saude) {
+    function altPacienteBanco($codigo, $nome, $cpf, $data_nasc, $plano_saude) {
 
         $cQuery = "";
         $query = null;
 
-        $cQuery  = " UPDATE `paciente` SET `nome` = '".$nome."', `cpf` = ".$cnpj.", `data_nascimento` = '".$data_nasc."', `plano_saude` = '".$plano_saude."'
+        $cQuery  = " UPDATE `paciente` SET `nome` = '".$nome."', `cpf` = '".$cpf."', `data_nascimento` = '".$data_nasc."', `plano_saude` = '".$plano_saude."'
                     WHERE `id_paciente` = '".$codigo."' ";
         
         $query = $this->db->query($cQuery);

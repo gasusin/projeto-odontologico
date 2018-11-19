@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Projeto e Arquitetura de Software</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<?php $this->load->view('sys/header');?>
+<?php $this->load->view('menu.php');?>
 
-    <script src="<?= base_url('js/jquery-222.min.js'); ?>"></script>
-    <script src="<?= base_url('js/bootstrap.js'); ?>"></script>
-    <script src="<?= base_url("js/bootbox.min.js");?>"></script>
-
-    <script src="<?= base_url("js/jquery.min.js");?>"></script>
-    <script src="<?= base_url("js/jquery.maskedinput.min.js");?>"></script>
-
-    <link rel="stylesheet" href="<?= base_url('css/bootstrap.css'); ?>">
-    <link rel="stylesheet" href="<?= base_url('css/bootstrap.min.css'); ?>">
-    
     <style type="text/css">
       body {
         display: flex;
@@ -21,7 +8,7 @@
       }
 
       .conteudo {
-        display: block;
+        display: flex;
         width: 100%;
         height: 100%;
       }
@@ -43,6 +30,10 @@
         text-align: right;
       }
 
+      .botoes form {
+        display: contents;
+      }
+
       .botoes button {
         margin: 10px;
       }
@@ -51,52 +42,16 @@
         background-color: lightblue!important;
       }
     </style>
-</head>
-<body>
 
-<?php include_once("menu.php"); ?>
+
 
 <div class="conteudo">
 
-  <div class="cabecalho">
-      <form method="post" action="<?= site_url('cadastro_pacientes/adiciona_paciente');?>" id="form_paciente" name="form_paciente">
-        <div class="form-group">
-          <!-- <div class="col-sm-1">
-            <label for="codigo">Código</label>
-            <input class="form-control" type="text" id="codigo" name="codigo" required>
-          </div> -->
-          <div class="col-sm-4">
-            <label for="paciente">Paciente</label>
-            <input class="form-control" type="text" id="paciente" name="paciente" autofocus required>
-          </div>
-          <div class="col-sm-2">
-            <label for="cnpj">CNPJ</label>
-            <input class="form-control" type="text" id="cnpj" name="cnpj" required>
-          </div>
-          <div class="col-sm-2">
-            <label for="data_nasc">Data Nascimento</label>
-            <input class="form-control" type="date" id="data_nasc" name="data_nasc" required>
-          </div>
-          <div class="col-sm-2">
-            <label for="plano_saude">Plano de saúde</label>
-            <select class="form-control" type="text" id="plano_saude" name="plano_saude" required>
-              <option>Sem plano</option>
-              <option>Unimed</option>
-              <option>Circulo</option>
-            </select>
-          </div>
-        </div>
-        <!-- <div class="form-group">
-        </div> -->
-      </form>
-  </div>
-
-  </br></br>
-  </br></br>
+  <h3>Cadastro de Pacientes</h3>
 
   <div class="itens">
     <table class="table table-striped table-hover">
-      <thead class="thead-dark">
+      <thead class="">
         <tr>
           <th>Código</th>
           <th>Paciente</th>
@@ -133,40 +88,20 @@
   </div>
   
   <div class="botoes">
-    <button class="btn btn-success" id="Adicionar" name="Adicionar">Adicionar</button>
+    <form method="post" action="<?= site_url('Cadastro_pacientes/inclui_paciente');?>" id="form_paciente_inclui" name="form_paciente_inclui">
+      <button class="btn btn-success" id="Adicionar" name="Adicionar">Adicionar</button>
+    </form>
     <button class="btn btn-danger" id="Excluir" name="Remover" >Remover</button>
-    <button class="btn btn-info" id="Alterar" name="Alterar">Alterar</button>
+    <form method="post" action="<?= site_url('Cadastro_pacientes/altera_paciente');?>" id="form_paciente_altera" name="form_paciente_altera">
+      <input type="hidden" name="paciente_cod" id="paciente_cod">
+      <input type="hidden" name="paciente_nome" id="paciente_nome">
+      <input type="hidden" name="paciente_cpf" id="paciente_cpf">
+      <input type="hidden" name="paciente_dt_nasc" id="paciente_dt_nasc">
+      <input type="hidden" name="paciente_pl_saude" id="paciente_pl_saude">
+      <button class="btn btn-info" id="Alterar" name="Alterar">Alterar</button>
+    </form>
   </div>
 
-</div>
-
-
-<div class="form-content" style="display:none;">
-  <form method="post" action="<?= site_url('Cadastro_pacientes/altera_paciente');?>" id="form_paciente_altera" name="form_paciente_altera">
-  <!-- <form id="form_paciente_altera" name="form_paciente_altera"> -->
-    <div class="form-group">
-      <!-- <div class="col-sm-4"> -->
-        <label for="alt_paciente">Paciente</label>
-        <input class="form-control" type="text" id="alt_paciente" name="alt_paciente" autofocus required>
-      <!-- </div> -->
-      <!-- <div class="col-sm-2"> -->
-        <label for="alt_cnpj">CNPJ</label>
-        <input class="form-control" type="text" id="alt_cnpj" name="alt_cnpj" required value="55555555555">
-      <!-- </div> -->
-      <!-- <div class="col-sm-2"> -->
-        <label for="alt_data_nasc">Data Nascimento</label>
-        <input class="form-control" type="date" id="alt_data_nasc" name="alt_data_nasc" required value="2018-01-01">
-      <!-- </div> -->
-      <!-- <div class="col-sm-2"> -->
-        <label for="alt_plano_saude">Plano de saúde</label>
-        <select class="form-control" type="text" id="alt_plano_saude" name="alt_plano_saude" required>
-          <option>Sem plano</option>
-          <option>Unimed</option>
-          <option>Circulo</option>
-        </select>
-      <!-- </div> -->
-    </div>
-</form>
 </div>
 
 
@@ -174,35 +109,58 @@
 
 <script type="text/javascript">
   // Mascara campos
-  $("#cnpj").mask("999.999.999-99");
+  $("#cpf").mask("999.999.999-99");
   $("#codigo").mask("99999");
   
 
   // Botões
-  $('#Adicionar').click( function() {
-    $('#form_paciente').submit();
-  });
   $('#Excluir').click( function() {
     var codigo = $('.selecionado').find('[name=codigo]').text();
 
-    // Envia codigo do paciente para controler
-    $.ajax({
-      url:   '<?= site_url('Cadastro_pacientes/exclui_paciente'); ?>',
-      type:  'POST',
-      data: {codigo : codigo},
-      error: function(result) {
-        alert("Erro!");
-      },
-      success: function( result ) { 
-        window.location.reload();
-      }
-    });
+    if (codigo) {
+      // Envia codigo do paciente para controler
+      $.ajax({
+        url:   '<?= site_url('Cadastro_pacientes/exclui_paciente'); ?>',
+        type:  'POST',
+        data: {codigo : codigo},
+        error: function(result) {
+          alert("Erro!");
+        },
+        success: function( result ) { 
+          window.location.reload();
+        }
+      });
+    }
   });
+  
   $('#Alterar').click( function() {
+      var paciente = $('.selecionado');
+
+    if (paciente[0]) {
+      var cod_paciente      = paciente.find('[name=codigo]').text();
+      var nome_paciente     = paciente.find('[name=nome]').text();
+      var cpf_paciente      = paciente.find('[name=cpf]').text();
+      var dt_nasc_paciente  = paciente.find('[name=data_nascimento]').text();
+      var pl_saude_paciente = paciente.find('[name=plano_saude]').text();
+
+      $('#paciente_cod').val(cod_paciente);
+      $('#paciente_nome').val(nome_paciente);
+      $('#paciente_cpf').val(cpf_paciente);
+      $('#paciente_dt_nasc').val(dt_nasc_paciente);
+      $('#paciente_pl_saude').val(pl_saude_paciente);
+
+      return true; 
+    }else{
+      return false;
+    }
+  });
+
+  /*$('#Alterar').click( function() {
     var paciente = $('.selecionado');
     var nome_paciente = paciente.find('[name=nome]').text();
     var codigo_paciente = paciente.find('[name=codigo]').text();
 
+console.log(paciente);
     // $('alt_paciente').val(nome_paciente);
 
     // console.log($(".form-content").find('#alt_paciente').val(nome_paciente));
@@ -244,7 +202,7 @@
                     }
                   });*/
 
-                  $('form_paciente_altera').submit();
+  /*                $('form_paciente_altera').submit();
                   window.location.reload();
               }
             }
@@ -252,7 +210,7 @@
         
       });
   });
-  
+  */
 
 
   // Seleção da linha
@@ -263,6 +221,4 @@
   });
 </script>
 
-</body>
-</html>
-
+<?php $this->load->view('sys/footer');?>
